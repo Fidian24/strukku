@@ -1,0 +1,42 @@
+name: strukku
+description: STRUKKU - Otomatisasi pencatatan transaksi keuangan dari struk belanja (OCR + klasifikasi kategori).
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Kamera & galeri
+  camera: ^0.11.0+2
+  image_picker: ^1.1.2
+  # OCR on-device (Google ML Kit)
+  google_mlkit_text_recognition: ^0.15.0
+
+  # Penyimpanan lokal (SQLite untuk mode demo/offline)
+  sqflite: ^2.4.1
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  shared_preferences: ^2.3.3
+
+  # Hash password (SHA-256 + salt) untuk akun lokal
+  crypto: ^3.0.6
+
+  # Integrasi FastAPI (nonaktif secara default)
+  http: ^1.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/illustrations/

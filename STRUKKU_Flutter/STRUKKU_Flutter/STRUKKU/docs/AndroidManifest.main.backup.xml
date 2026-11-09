@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Kamera: untuk memindai struk (plugin camera meminta izin saat runtime). -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- Internet: hanya dipakai jika mode FastAPI diaktifkan (AppConfig.useFastApi). -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Kamera tidak wajib: pengguna tetap bisa memilih gambar dari galeri. -->
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+
+    <!-- Galeri: image_picker memakai Photo Picker/Storage Access Framework,
+         sehingga tidak membutuhkan izin baca penyimpanan. -->
+
+    <application
+        android:label="STRUKKU"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
+        <!-- usesCleartextTraffic="true" hanya agar backend lokal (http://10.0.2.2:8000)
+             dapat dipanggil saat pengembangan. Hapus untuk produksi (pakai HTTPS). -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+</manifest>
